@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OrthoNow | Expert Orthopaedic Consultation</title>
+    <meta name="description" content="Get an expert orthopaedic opinion for knee and back pain. Book your consultation at OrthoNow.">
+    <style>
+
+        :root {
+            --primary-color: #0263e0;
+            --primary-hover: #024ebd;
+            --bg-page: #eef2f6; /* Soft blue-grey background */
+            --bg-card: #ffffff;
+            --text-main: #1e293b; /* Dark slate for high contrast */
+            --text-muted: #475569;
+            --border-color: #cbd5e1;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-main);
+            background-color: var(--bg-page);
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .card {
+            background: var(--bg-card);
+            max-width: 500px;
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            padding: 40px 32px;
+            box-sizing: border-box;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            color: var(--text-main);
+            margin: 0 0 12px 0;
+            line-height: 1.25;
+            letter-spacing: -0.5px;
+        }
+
+        .subheadline {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        .highlight {
+            color: var(--primary-color);
+        }
+
+        .trust-badge {
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
+            padding: 12px 16px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            border: 1.5px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(2, 99, 224, 0.15);
+        }
+
+        button {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+            color: #fff;
+            border: none;
+            padding: 16px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 12px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(2, 99, 224, 0.25);
+        }
+
+        #thankYouState {
+            display: none;
+            text-align: center;
+            padding: 30px 20px;
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 12px;
+            color: #166534;
+        }
+
+        #thankYouState h2 {
+            margin-top: 0;
+            color: #15803d;
+        }
+
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 32px 20px;
+            }
+            h1 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <header>
+            <h1>Get an <span class="highlight">Expert Orthopaedic Opinion</span> in Bengaluru</h1>
+            <p class="subheadline">Struggling with persistent knee or back pain? Book your consultation at OrthoNow and get back to your active lifestyle.</p>
+        </header>
+
+        <div class="trust-badge">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #0ea5e9;">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+            Trusted by 10,000+ patients across 9 clinics
+        </div>
+
+        <form id="consultationForm">
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="fullName" required placeholder="e.g. Rahul Sharma">
+            </div>
+            
+            <div class="form-group">
+                <label for="phoneNum">Phone Number</label>
+                <input type="tel" id="phoneNum" name="phoneNum" required pattern="[0-9]{10}" placeholder="10-digit mobile number">
+            </div>
+
+            <button type="submit" id="submitBtn">Book Consultation</button>
+        </form>
+
+        <div id="thankYouState">
+            <h2>Consultation Requested!</h2>
+            <p>Thank you. Our care team will contact you within 2 hours to confirm your appointment slot.</p>
+        </div>
+    </div>
+
+    <script>
+        // Initialize dataLayer if it doesn't exist
+        window.dataLayer = window.dataLayer || [];
+
+        document.getElementById('consultationForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent page reload
+
+            // 1. Fire the GTM dataLayer push
+            window.dataLayer.push({
+                'event': 'consultation_form_submitted',
+                'form_location': 'hero_section',
+                'patient_city': 'Bengaluru',
+                'campaign': 'orthonow_q3_pain'
+            });
+
+            // 2. Print to console for the Loom video demo
+            console.log("✅ DataLayer Push Successful! Here is the payload:");
+            console.log(window.dataLayer);
+
+            // 3. Hide form and show thank you state
+            this.style.display = 'none';
+            document.getElementById('thankYouState').style.display = 'block';
+        });
+    </script>
+
+</body>
+</html>
